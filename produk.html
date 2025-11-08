@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kamera DSLR Canon EOS 200D - E-Shop</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Variabel Warna */
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+            --success: #2ecc71;
+            --border: #e0e0e0;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .search-cart {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box {
+            display: flex;
+            margin-right: 1rem;
+        }
+
+        .search-box input {
+            padding: 0.5rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+
+        .search-box button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            position: relative;
+            color: white;
+            font-size: 1.5rem;
+            margin-left: 1rem;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            padding: 1rem 0;
+            background-color: white;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .breadcrumb ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .breadcrumb ul li {
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb ul li:not(:last-child)::after {
+            content: ">";
+            margin-left: 0.5rem;
+            color: var(--gray);
+        }
+
+        .breadcrumb ul li a {
+            color: var(--gray);
+            text-decoration: none;
+        }
+
+        .breadcrumb ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .breadcrumb ul li:last-child {
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        /* Product Detail */
+        .product-detail {
+            padding: 2rem 0;
+            background-color: white;
+        }
+
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .product-images {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #fafafa;
+        }
+
+        .image-thumbnails {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 0.5rem;
+            background-color: #fafafa;
+            transition: border-color 0.3s;
+        }
+
+        .thumbnail:hover, .thumbnail.active {
+            border-color: var(--secondary);
+        }
+
+        .product-info {
+            padding: 0 1rem;
+        }
+
+        .product-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: #f39c12;
+            margin-right: 0.5rem;
+        }
+
+        .rating-count {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .product-options {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-group {
+            margin-bottom: 1rem;
+        }
+
+        .option-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .option-select {
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .quantity-label {
+            margin-right: 1rem;
+            font-weight: 500;
+        }
+
+        .quantity-input {
+            width: 70px;
+            padding: 0.5rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            color: white;
+            flex: 2;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            flex: 1;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .product-meta {
+            border-top: 1px solid var(--border);
+            padding-top: 1rem;
+        }
+
+        .meta-item {
+            display: flex;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-label {
+            font-weight: 500;
+            min-width: 120px;
+        }
+
+        /* Tabs Section */
+        .product-tabs {
+            padding: 2rem 0;
+            background-color: white;
+            margin-top: 2rem;
+        }
+
+        .tabs-header {
+            display: flex;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.5rem;
+        }
+
+        .tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            border-bottom-color: var(--secondary);
+            color: var(--secondary);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 1rem 0;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .specs-table tr {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .specs-table td {
+            padding: 0.8rem 0;
+        }
+
+        .specs-table td:first-child {
+            font-weight: 500;
+            width: 30%;
+        }
+
+        /* Reviews */
+        .review-summary {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .overall-rating {
+            text-align: center;
+            margin-right: 2rem;
+            padding-right: 2rem;
+            border-right: 1px solid var(--border);
+        }
+
+        .rating-score {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--dark);
+            line-height: 1;
+        }
+
+        .rating-stars {
+            color: #f39c12;
+            margin: 0.5rem 0;
+        }
+
+        .rating-count {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .rating-bars {
+            flex: 1;
+        }
+
+        .rating-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .bar-label {
+            width: 80px;
+            font-size: 0.9rem;
+        }
+
+        .bar-container {
+            flex: 1;
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin: 0 1rem;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background-color: #f39c12;
+        }
+
+        .bar-percent {
+            width: 40px;
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .reviews-list {
+            margin-top: 2rem;
+        }
+
+        .review-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .reviewer-name {
+            font-weight: 500;
+        }
+
+        .review-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .review-rating {
+            color: #f39c12;
+            margin-bottom: 0.5rem;
+        }
+
+        .review-text {
+            line-height: 1.6;
+        }
+
+        /* Related Products */
+        .related-products {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+            margin: 0.5rem auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            padding: 1rem;
+            background-color: #fafafa;
+        }
+
+        .product-info-card {
+            padding: 1rem;
+        }
+
+        .product-title-card {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .product-price-card {
+            font-weight: bold;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .product-rating-card {
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 0.7rem;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #2980b9;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--secondary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem;
+            }
+
+            .search-cart {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .product-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .review-summary {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .overall-rating {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+                padding-right: 0;
+                padding-bottom: 1.5rem;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">E<span>Shop</span></a>
+                
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="#">Produk</a></li>
+                        <li><a href="#">Kategori</a></li>
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Kontak</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="search-cart">
+                    <div class="search-box">
+                        <input type="text" placeholder="Cari produk...">
+                        <button>Cari</button>
+                    </div>
+                    <div class="cart-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">Beranda</a></li>
+                <li><a href="#">Elektronik</a></li>
+                <li><a href="#">Kamera</a></li>
+                <li>Kamera DSLR Canon EOS 200D</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Product Detail -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-container">
+                <div class="product-images">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kamera DSLR Canon EOS 200D" class="main-image" id="mainImage">
+                    <div class="image-thumbnails">
+                        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Kamera DSLR Canon EOS 200D - Tampak Depan" class="thumbnail active" onclick="changeImage(this)">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Kamera DSLR Canon EOS 200D - Tampak Samping" class="thumbnail" onclick="changeImage(this)">
+                        <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Kamera DSLR Canon EOS 200D - Tampak Belakang" class="thumbnail" onclick="changeImage(this)">
+                        <img src="https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Kamera DSLR Canon EOS 200D - Dengan Lensa" class="thumbnail" onclick="changeImage(this)">
+                    </div>
+                </div>
+                
+                <div class="product-info">
+                    <h1 class="product-title">Kamera DSLR Canon EOS 200D</h1>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="rating-count">(4.2 / 128 ulasan)</div>
+                    </div>
+                    <div class="product-price">Rp 7.500.000</div>
+                    <p class="product-description">
+                        Kamera DSLR Canon EOS 200D adalah kamera entry-level yang cocok untuk pemula yang ingin memulai perjalanan fotografi. Dengan sensor 24.2MP, prosesor DIGIC 7, dan sistem AF Dual Pixel, kamera ini memberikan kualitas gambar yang tajam dan performa yang cepat.
+                    </p>
+                    
+                    <div class="product-options">
+                        <div class="option-group">
+                            <label class="option-label" for="color">Warna:</label>
+                            <select class="option-select" id="color">
+                                <option value="black">Hitam</option>
+                                <option value="white">Putih</option>
+                                <option value="silver">Silver</option>
+                            </select>
+                        </div>
+                        
+                        <div class="option-group">
+                            <label class="option-label" for="lens">Pilihan Lensa:</label>
+                            <select class="option-select" id="lens">
+                                <option value="kit">Kit Lens 18-55mm</option>
+                                <option value="dual">Dual Lens 18-55mm & 55-250mm</option>
+                                <option value="body">Body Only</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <label class="quantity-label" for="quantity">Jumlah:</label>
+                        <input type="number" id="quantity" class="quantity-input" value="1" min="1">
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Tambah ke Keranjang</button>
+                        <button class="btn btn-outline"><i class="fas fa-heart"></i> Wishlist</button>
+                    </div>
+                    
+                    <div class="product-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Kategori:</span>
+                            <span>Elektronik > Kamera > DSLR</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Stok:</span>
+                            <span style="color: var(--success);">Tersedia (15)</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Garansi:</span>
+                            <span>2 Tahun</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Pengiriman:</span>
+                            <span>Gratis Ongkir</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Tabs -->
+    <section class="product-tabs">
+        <div class="container">
+            <div class="tabs-header">
+                <div class="tab active" onclick="openTab('description')">Deskripsi</div>
+                <div class="tab" onclick="openTab('specifications')">Spesifikasi</div>
+                <div class="tab" onclick="openTab('reviews')">Ulasan (128)</div>
+            </div>
+            
+            <div id="description" class="tab-content active">
+                <h3>Tentang Kamera DSLR Canon EOS 200D</h3>
+                <p>Kamera DSLR Canon EOS 200D adalah kamera yang dirancang untuk fotografer pemula yang ingin menghasilkan gambar berkualitas tinggi dengan mudah. Dengan bodi yang ringkas dan ringan, kamera ini nyaman digunakan untuk pemotretan sehari-hari.</p>
+                
+                <h4>Fitur Utama:</h4>
+                <ul>
+                    <li>Sensor CMOS APS-C 24.2MP untuk gambar berkualitas tinggi</li>
+                    <li>Prosesor DIGIC 7 untuk performa cepat dan efisien</li>
+                    <li>Sistem AF Dual Pixel dengan 9 titik AF</li>
+                    <li>Layar sentil vari-angle 3.0 inci</li>
+                    <li>Konektivitas Wi-Fi, NFC, dan Bluetooth</li>
+                    <li>Mode Otomatis Cerdas untuk pemula</li>
+                    <li>Perekaman video Full HD 60p</li>
+                    <li>Baterai tahan lama dengan hingga 650 shot per charge</li>
+                </ul>
+                
+                <p>Dengan kombinasi fitur canggih dan kemudahan penggunaan, EOS 200D adalah pilihan sempurna untuk memulai perjalanan fotografi Anda.</p>
+            </div>
+            
+            <div id="specifications" class="tab-content">
+                <table class="specs-table">
+                    <tr>
+                        <td>Tipe Sensor</td>
+                        <td>CMOS APS-C (22.3 x 14.9 mm)</td>
+                    </tr>
+                    <tr>
+                        <td>Resolusi Efektif</td>
+                        <td>24.2 Megapixel</td>
+                    </tr>
+                    <tr>
+                        <td>Prosesor Gambar</td>
+                        <td>DIGIC 7</td>
+                    </tr>
+                    <tr>
+                        <td>Sistem AF</td>
+                        <td>Dual Pixel CMOS AF dengan 9 titik AF</td>
+                    </tr>
+                    <tr>
+                        <td>ISO</td>
+                        <td>100-25600 (dapat diperluas hingga 51200)</td>
+                    </tr>
+                    <tr>
+                        <td>Kecepatan Rana</td>
+                        <td>1/4000s hingga 30s, Bulb</td>
+                    </tr>
+                    <tr>
+                        <td>Burst Shooting</td>
+                        <td>Hingga 5 fps</td>
+                    </tr>
+                    <tr>
+                        <td>Layar</td>
+                        <td>3.0 inci Vari-angle Touchscreen LCD (1.040.000 dot)</td>
+                    </tr>
+                    <tr>
+                        <td>Viewfinder</td>
+                        <td>Optical Pentamirror (95% cakupan)</td>
+                    </tr>
+                    <tr>
+                        <td>Video</td>
+                        <td>Full HD 1920x1080 (60p/50p/30p/25p/24p)</td>
+                    </tr>
+                    <tr>
+                        <td>Konektivitas</td>
+                        <td>Wi-Fi, NFC, Bluetooth</td>
+                    </tr>
+                    <tr>
+                        <td>Baterai</td>
+                        <td>LP-E17 (sekitar 650 shot)</td>
+                    </tr>
+                    <tr>
+                        <td>Dimensi</td>
+                        <td>122.4 x 92.6 x 69.8 mm</td>
+                    </tr>
+                    <tr>
+                        <td>Berat</td>
+                        <td>453 g (termasuk baterai dan memori)</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <div id="reviews" class="tab-content">
+                <div class="review-summary">
+                    <div class="overall-rating">
+                        <div class="rating-score">4.2</div>
+                        <div class="rating-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="rating-count">128 Ulasan</div>
+                    </div>
+                    
+                    <div class="rating-bars">
+                        <div class="rating-bar">
+                            <div class="bar-label">5 Bintang</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 65%;"></div>
+                            </div>
+                            <div class="bar-percent">65%</div>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="bar-label">4 Bintang</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 20%;"></div>
+                            </div>
+                            <div class="bar-percent">20%</div>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="bar-label">3 Bintang</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 10%;"></div>
+                            </div>
+                            <div class="bar-percent">10%</div>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="bar-label">2 Bintang</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 3%;"></div>
+                            </div>
+                            <div class="bar-percent">3%</div>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="bar-label">1 Bintang</div>
+                            <div class="bar-container">
+                                <div class="bar-fill" style="width: 2%;"></div>
+                            </div>
+                            <div class="bar-percent">2%</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reviews-list">
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-name">Ahmad Rizki</div>
+                            <div class="review-date">15 Maret 2023</div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="review-text">
+                            Kamera yang sangat bagus untuk pemula seperti saya. Kualitas gambar tajam dan warna yang natural. Fitur guided UI sangat membantu untuk belajar fotografi. Pengiriman cepat dan packing aman.
+                        </div>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-name">Sari Dewi</div>
+                            <div class="review-date">2 Februari 2023</div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <div class="review-text">
+                            Ukuran yang compact dan ringan, cocok untuk dibawa traveling. Konektivitas Wi-Fi memudahkan transfer foto ke smartphone. Hanya saja baterai agak cepat habis jika menggunakan live view terus.
+                        </div>
+                    </div>
+                    
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-name">Budi Santoso</div>
+                            <div class="review-date">20 Januari 2023</div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="review-text">
+                            Sudah menggunakan kamera ini selama 3 bulan, hasilnya memuaskan. Auto focus yang cepat dan akurat. Harga sesuai dengan kualitas yang diberikan. Recomended untuk pemula yang serius belajar fotografi.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="related-products">
+        <div class="container">
+            <h2 class="section-title">Produk Terkait</h2>
+            <div class="product-grid">
+                <!-- Produk 1 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Kamera Mirrorless Sony A6000" class="product-image">
+                    <div class="product-info-card">
+                        <h3 class="product-title-card">Kamera Mirrorless Sony A6000</h3>
+                        <div class="product-price-card">Rp 6.200.000</div>
+                        <div class="product-rating-card">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            (4.3)
+                        </div>
+                        <button class="add-to-cart">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+                
+                <!-- Produk 2 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Lensa Canon EF 50mm f/1.8" class="product-image">
+                    <div class="product-info-card">
+                        <h3 class="product-title-card">Lensa Canon EF 50mm f/1.8 STM</h3>
+                        <div class="product-price-card">Rp 1.250.000</div>
+                        <div class="product-rating-card">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            (4.8)
+                        </div>
+                        <button class="add-to-cart">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+                
+                <!-- Produk 3 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1606983340126-99ab4feaa64a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tripod Kamera Profesional" class="product-image">
+                    <div class="product-info-card">
+                        <h3 class="product-title-card">Tripod Kamera Profesional</h3>
+                        <div class="product-price-card">Rp 850.000</div>
+                        <div class="product-rating-card">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            (4.0)
+                        </div>
+                        <button class="add-to-cart">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+                
+                <!-- Produk 4 -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1581591526958-2d2bdb9bd6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Tas Kamera DSLR" class="product-image">
+                    <div class="product-info-card">
+                        <h3 class="product-title-card">Tas Kamera DSLR Waterproof</h3>
+                        <div class="product-price-card">Rp 450.000</div>
+                        <div class="product-rating-card">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            (4.5)
+                        </div>
+                        <button class="add-to-cart">Tambah ke Keranjang</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Tentang E-Shop</h3>
+                    <p>E-Shop adalah toko online terpercaya yang menyediakan berbagai produk berkualitas dengan harga terbaik.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Informasi</h3>
+                    <ul>
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Kebijakan Privasi</a></li>
+                        <li><a href="#">Syarat & Ketentuan</a></li>
+                        <li><a href="#">Bantuan</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Layanan Pelanggan</h3>
+                    <ul>
+                        <li><a href="#">Hubungi Kami</a></li>
+                        <li><a href="#">Cara Berbelanja</a></li>
+                        <li><a href="#">Pengembalian</a></li>
+                        <li><a href="#">Pembayaran</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ikuti Kami</h3>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 E-Shop. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Fungsi untuk mengganti gambar utama
+        function changeImage(element) {
+            const mainImage = document.getElementById('mainImage');
+            mainImage.src = element.src;
+            
+            // Hapus kelas active dari semua thumbnail
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach(thumb => {
+                thumb.classList.remove('active');
+            });
+            
+            // Tambahkan kelas active ke thumbnail yang diklik
+            element.classList.add('active');
+        }
+        
+        // Fungsi untuk tab
+        function openTab(tabName) {
+            // Sembunyikan semua tab content
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Hapus kelas active dari semua tab
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Tampilkan tab content yang dipilih dan aktifkan tab
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
